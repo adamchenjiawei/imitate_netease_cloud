@@ -1,3 +1,5 @@
+[TOC]
+
 # 熟悉前端开发以及vue基础知识
 
 ## 目标：学习Vue + 音乐播放器Demo
@@ -12,7 +14,7 @@
 
 
 技术架构：Vue + vue-cli + Bootstrap
-代码仓库：https://github.com/adamchenjiawei/imitate_netease_cloud
+
 额外补充：单元测试&代码走查
 
 ## 学习过程
