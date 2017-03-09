@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div class="heard">
-
-    </div>
+  <div class="music">
     <div class="container">
       <div class="music-info">
         <div class="cover">
@@ -55,15 +52,41 @@
           </div>
         </div>
       </div>
-
       <section class="music-comment">
-
+        <div class="comment-title">
+          <h3>评论</h3>
+          <span>共20条评论</span>
+        </div>
+        <div v-for="comment in comments">
+          <m-comment :comment="comment" ></m-comment>
+        </div>
       </section>
     </div>
 
   </div>
 </template>
 <style scoped>
+  .music {
+    width: 60%;
+    margin: auto;
+    border-right: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 30px;
+    background-color: #fff;
+  }
+  .comment-title {
+    border-bottom: 2px solid #c20c0c;
+    height: 55px;
+  }
+  .comment-title h3 {
+    float: left;
+  }
+  .comment-title span {
+    float: left;
+    margin: 24px 0 0 6px;
+    font-size: 14px;
+  }
   .heard {
     width: 100%;
     height: 30px;
@@ -89,10 +112,9 @@
     position: absolute;
   }
   .cover img {
-    top: 48px;
+    top: 44px;
     position: absolute;
-    left: 48px;
-    z-index: -1;
+    left: 46px;
   }
   .info {
     width: 69%;
@@ -126,20 +148,61 @@
   .msk {
     width: 206px;
     height: 205px;
-    background-position: -140px -580px;
-    background-image: url(../../assets/coverall.png);
+    background: url(../../assets/coverall.png) no-repeat;
     position: absolute;
     top: 10px;
     left: 10px;
+    z-index: 2;
+  }
+  .music-comment {
+    text-align: left;
+    margin:0 20px;
+    clear: both;
   }
 </style>
 
 <script>
+  import $ from 'jquery'
+  import MComment from '../../components/widgets/m-comment.vue'
   export default {
+    data () {
+      return {
+        comments: [
+          {
+            content: '我喜欢你, 笨蛋你这样我怎么知道你叫什么啊',
+            name: 'Adam',
+            avatar: 'http://p4.music.126.net/bSVYguPwCF4VJMCbg7QbyA==/18826937604170833.jpg?param=50y50'
+          },
+          {
+            content: '事实证明，还是女生追女生更厉害一点！！！',
+            name: '安静的卡卡7',
+            avatar: 'http://p4.music.126.net/DZY2LAwiw-5zygdrJW-WPw==/3434874329475421.jpg?param=50y50'
+          },
+          {
+            content: '最后十分钟简直恐怖啊，刀都架在新海诚脖子上了，心里默念千万别是秒五，还好还好。。。哦？新海诚你还在啊！走吧走吧，你不用死了。',
+            name: '爱青花的喵喵',
+            avatar: 'http://p3.music.126.net/gGfoB-lpyegh_DNYO6LLKQ==/1396379772408935.jpg?param=50y50'
+          },
+          {
+            content: '如果你能看到生命的尽头，你会有所改变么',
+            name: '雅虎酱',
+            avatar: 'http://p3.music.126.net/LLehdAcaH3Rj_gbVPa1upA==/18799449813536807.jpg?param=50y50'
+          },
+          {
+            content: '看了很久了，情节到现在还历历在目只记得当时久久不离开直到人都走尽了',
+            name: '桜雒',
+            avatar: 'http://p4.music.126.net/_RyNH596ix92d5wDxpVXIg==/18572950418225844.jpg?param=50y50'
+          }
+        ]
+      }
+    },
+    components: {
+      MComment
+    },
     methods: {
       playMusic () {
-        const audio = document.getElementsByTagName('audio')[0]
-        const playButton = document.getElementsByClassName('play-music')[0]
+        const audio = $('audio')[0]
+        const playButton = $('.play-music')[0]
         if (audio.paused) {
           audio.play()
           playButton.setAttribute('value', '暂停')
