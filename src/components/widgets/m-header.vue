@@ -26,16 +26,9 @@
   nav div:hover {
     background-color: #c20c0c;
   }
-  .active {
-    background-color: #c20c0c;
-  }
 </style>
 <script>
+
   export default {
-    methods: {
-      menuActive () {
-        vm.$el('nav div')
-      }
-    }
   }
 </script>
