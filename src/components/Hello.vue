@@ -27,6 +27,16 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  route: {
+    activate: function () {
+      this.msg = 'Hey'
+    }
+  },
+  methods: {
+    sayHi (word) {
+      this.msg = word
+    }
   }
 }
 </script>
