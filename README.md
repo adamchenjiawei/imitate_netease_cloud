@@ -254,15 +254,17 @@ html {
 
 
 ## 资料
-* [vue-cli](http://www.cnblogs.com/xuange306/p/6092225.html)
-* [W3School](http://www.w3school.com.cn/)
-* [HTML5标签](http://www.w3school.com.cn/tags/index.asp)
-* [Bootstrap](http://v3.bootcss.com/getting-started/)
-* [vue基础](https://cn.vuejs.org/v2/guide/)
-* [avatar](https://github.com/eliep/vue-avatar)
-* [ES6语法基础](http://es6.ruanyifeng.com/)
-* [rem单位](http://www.cnblogs.com/y896926473/articles/5351735.html)
-* [components复用](https://www.zhihu.com/question/34252190)
+[vue-cli](http://www.cnblogs.com/xuange306/p/6092225.html)
+[W3School](http://www.w3school.com.cn/)
+[HTML5标签](http://www.w3school.com.cn/tags/index.asp)
+[Bootstrap](http://v3.bootcss.com/getting-started/)
+[vue基础](https://cn.vuejs.org/v2/guide/)
+[avatar](https://github.com/eliep/vue-avatar)
+[ES6语法基础](http://es6.ruanyifeng.com/)
+[rem单位](http://www.cnblogs.com/y896926473/articles/5351735.html)
+[components复用](https://www.zhihu.com/question/34252190)
+
+
 
 ------
 
