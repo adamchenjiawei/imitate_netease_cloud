@@ -11,17 +11,22 @@
 </template>
 <style scoped>
   .header {
-    height: 40px;
+    height: 0.4rem;
     background: -webkit-gradient(linear, 0 0, 0 bottom, from(#ff0000), to(#c20c0c));
     border-bottom: 1px solid #600000;
   }
+  nav {
+    justify-content: center;
+    display: flex;
+  }
   nav div {
+    font-size: 0.12rem;
     display: inline-block;
-    margin-left: 20px;
-    padding: 8px;
-    width: 50px;
-    height: 24px;
+    padding: 0.08rem;
+    width: 0.38rem;
+    height: 0.24rem;
     color: #fff;
+    float: left;
   }
   nav div:hover {
     background-color: #c20c0c;

@@ -1,4 +1,9 @@
+# vue - 仿网易云音乐
+
+
+---
 [TOC]
+
 # 熟悉前端开发以及vue基础知识
 
 ## 目标：学习Vue + 音乐播放器Demo
@@ -17,7 +22,7 @@
 额外补充：单元测试&代码走查
 
 ## 学习过程
-###day1：
+###第一步：
 #### 了解HTML5标签
 a. 特性
 * 用于绘画的canvas
@@ -28,15 +33,15 @@ a. 特性
 了解 HTML各个标签使用场景
 HTML5标签 http://www.w3school.com.cn/tags/index.asp
 
-了解video标签属性 以及dom操作方法[参考](http://www.w3school.com.cn/html5/html_5_video_dom.asp)
-了解audio标签属性以及dom操作方法[参考](http://www.w3school.com.cn/html5/html_5_audio.asp)
-了解表单元素 [参考](http://www.w3school.com.cn/html5/html_5_form_input_types.asp)
+* 了解video标签属性 以及dom操作方法[参考](http://www.w3school.com.cn/html5/html_5_video_dom.asp)
+* 了解audio标签属性以及dom操作方法[参考](http://www.w3school.com.cn/html5/html_5_audio.asp)
+* 了解表单元素 [参考](http://www.w3school.com.cn/html5/html_5_form_input_types.asp)
 
 #### 了解CSS3
-[css3 2D转换](http://www.w3school.com.cn/css3/css3_2dtransform.asp)
-[css3 3D转换](http://www.w3school.com.cn/css3/css3_3dtransform.asp)
-[css3 动画](http://www.w3school.com.cn/css3/css3_animation.asp)
-[css盒子模型](http://www.w3school.com.cn/css/css_boxmodel.asp)
+* [css3 2D转换](http://www.w3school.com.cn/css3/css3_2dtransform.asp)
+* [css3 3D转换](http://www.w3school.com.cn/css3/css3_3dtransform.asp)
+* [css3 动画](http://www.w3school.com.cn/css3/css3_animation.asp)
+* [css盒子模型](http://www.w3school.com.cn/css/css_boxmodel.asp)
 
 CSS布局[参考](http://www.w3school.com.cn/css/css_positioning.asp)
 
@@ -91,6 +96,11 @@ visible hidden collapse
 5. inherit
 规定应该从父元素继承 position 属性的值。
 
+6. flex
+参考：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool
+
+
+
 七、偏移
 top right left bottom
 常用属性值 auto | 尺寸值 |百分比值
@@ -122,8 +132,10 @@ clear  left  right both none    左侧不允许浮动等
 ```
 
 ####Vue-cli 搭建项目
-[Vue-cli](http://www.cnblogs.com/xuange306/p/6092225.html)
-[yarn](http://www.jianshu.com/p/d2f88722aef9)
+安装好vue 、nodejs
+工具：
+1. [Vue-cli](http://www.cnblogs.com/xuange306/p/6092225.html)： vue项目创建工具
+2. [yarn](http://www.jianshu.com/p/d2f88722aef9)：包管理工具
 ```
 1. 安装 vue-cli
 
@@ -140,140 +152,121 @@ yarn init
 yarn
 
 npm run dev
+
+3. 执行测试（测试执行出错，可参考底部问题集）
+
+npm run test
+
+4. 在vue项目实现音频播放
+```
+
+####Vue 项目结构
+![此处输入图片的描述][4]
+
+
+###第二步
+
+参照网易云实现以下布局
+![此处输入图片的描述][1]
+
+* 调整播放界面布局
+* 显示歌曲基本信息（标题、歌手、专辑、歌词等信息）
+* 实现播放按钮控制音频播放
+
+
+
+###第三步
+参照网易云实现评论列表
+![此处输入图片的描述][2]
+
+1. 使用vue components 实现评论列表[参考](https://www.zhihu.com/question/34252190)
+2. 使用[vue-avatar](https://github.com/eliep/vue-avatar) 实现用户头像
+3. 了解 rem，em，px等的区别
+4. 使用rem 实现手机端适配[参考](http://www.cnblogs.com/y896926473/articles/5351735.html)
+
+####vue components
+通过props传递数据
+
+```
+<template>
+  <div class="comment">
+      <avatar username="Adam" :src="comment.avatar"></avatar>
+      <p>{{comment.name}}：</p>
+      <p>{{comment.content}}</p>
+  </div>
+</template>
+<script>
+  import Avatar from 'vue-avatar/dist/Avatar'
+  export default {
+    components: {
+      Avatar
+    },
+    props: {
+      comment: {
+        type: Object
+      }
+    }
+  }
+</script>
+
 ```
 
 
 
+####Rem
 
-###day2
-
-1. 修复昨天单元测试执行出错问题
-2. 调整播放界面布局 显示歌曲基本信息（标题、歌手、专辑、歌词等信息）
-3. 实现播放按钮控制音频播放
-[nodejs版本更新](http://blog.csdn.net/sruru/article/details/46301405)
 ```
-npm 版本更新
-
-npm install -g npm
-
-nodejs 版本更新
-
-1. 检查 Node的当前版本，使用命令
-node -v
-
-2. 清除npm cache
-sudo npm cache clean -f
-
-3. 安装n模块
-sudo npm install -g n
-
-4. 升级到最新版本
-sudo n 0.8.11
-或者你也可以告诉管理器，安装最新的稳定版本
-sudo n stable
+html {
+    font-size: calc(100vw/3.75)
+  }
 
 ```
 
+#### vue data数据
+
+```
+<script>
+  import $ from 'jquery'
+  import MComment from '../../components/widgets/m-comment.vue'
+  export default {
+    data () {
+      return {
+        comments: [
+          {
+            content: '我喜欢你, 笨蛋你这样我怎么知道你叫什么啊',
+            name: 'Adam',
+            avatar: 'http://p4.music.126.net/bSVYguPwCF4VJMCbg7QbyA==/18826937604170833.jpg?param=50y50'
+          }
+        ]
+      }
+    }
+}
+</scritp>
+```
 
 
+###完成效果：
+![此处输入图片的描述][3]
 
 
 ## 问题
+[Issue](https://github.com/adamchenjiawei/imitate_netease_cloud/blob/master/ISSUE.md)
 
-### 单元测试执行出错；(03-07)
-**a. 出错信息： 未安装PhantomJS**
-```
-08 03 2017 10:31:58.022:ERROR [launcher]: No binary for PhantomJS browser on your platform.
-  Please, set "PHANTOMJS_BIN" env variable.
-08 03 2017 10:31:58.025:ERROR [karma]: [TypeError: Cannot read property 'stderr' of undefined]
-TypeError: Cannot read property 'stderr' of undefined
-
-```
-
-解决方法：
-
-参考资料：
-[切换npm源](http://blog.csdn.net/fjnjxr/article/details/53462422)
-[安装PhantomJS](http://blog.csdn.net/xuexiiphone/article/details/52233352)
-```
-1. 切换npm源
-npm config set registry http://registry.npm.taobao.org/
-
-2. 安装PhantomJS (翻墙下载安装  有点慢)
-sudo npm install -g karma-phantomjs-launcher
-
-3. 配置环境变量（MacOS）
-vim ~/.bash_profile
-
-增加
-export PHANTOMJS_BIN=/usr/local/lib/node_modules/karma-phantomjs-launcher/node_modules/phantomjs-prebuilt/bin/phantomjs
-
-source ~/.bash_profile
-
-
-```
-
-**b. 出错信息：未安装latest**
-```
-08 03 2017 13:29:37.307:WARN [reporter]: SourceMap position not found for trace: undefined
-PhantomJS 2.1.1 (Mac OS X 0.0.0) ERROR
-  Error: Module build failed: Error: Couldn't find preset "latest" relative to directory "/Users/adam/Documents/private_repo/imitate_netease_cloud"
-
-```
-
-解决方案：
-[参考](https://segmentfault.com/q/1010000006005280/a-1020000006008290)
-[.babelrc](https://zhuanlan.zhihu.com/p/24224107)
-```
-安装latest
-
-sudo npm install -save-dev babel-preset-latest
-```
-
-**c. 出错信息：selenium sever 启动出错**
-```
-Starting selenium server... There was an error while starting the Selenium server:
-
-Exception in thread "main" java.lang.UnsupportedClassVersionError: org/openqa/grid/selenium/GridLauncherV3 : Unsupported major.minor version 52.0
-
-```
-
-解决方法：
-[参考](http://www.cnblogs.com/plus-chen/p/6392251.html)
-
-```
-1. 安装chromedriver
-sudo npm install chromedriver
-
-java版本与selenium支持版本对应
-
-J2SE 8 = 52, J2SE 7 = 51, J2SE 6.0 = 50, J2SE 5.0 = 49, JDK 1.4 = 48, JDK 1.3 = 47, JDK 1.2 = 46, JDK 1.1 = 45
-
-这里报错的是52版本  java版本需要切换成java8的版本
-
-```
-
-**d. 出错信息： Path must be a string. Received null**
-```
-> imitate_netease_cloud@1.0.0 unit /Users/defaultuser/kid/imitate_netease_cloud
-> cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run
-
-08 03 2017 17:03:15.675:ERROR [plugin]: Error during loading "/Users/defaultuser/kid/imitate_netease_cloud/node_modules/karma-phantomjs-launcher" plugin:
-  Path must be a string. Received null
-Hash: 42c9471806d19b9e4455
-Version: webpack 2.2.1
-```
-
-解决方案：
-[参考](https://github.com/karma-runner/karma-phantomjs-launcher/issues/120)
-```
-1. 安装 phantomjs-prebuilt
-sudo npm install  phantomjs-prebuilt --save
-```
-
-
-03-08
-1. 如何引入css文件
-2. vue 如何引入jquery
 
 ## 资料
+* [vue-cli](http://www.cnblogs.com/xuange306/p/6092225.html)
+* [W3School](http://www.w3school.com.cn/)
+* [HTML5标签](http://www.w3school.com.cn/tags/index.asp)
+* [Bootstrap](http://v3.bootcss.com/getting-started/)
+* [vue基础](https://cn.vuejs.org/v2/guide/)
+* [avatar](https://github.com/eliep/vue-avatar)
+* [ES6语法基础](http://es6.ruanyifeng.com/)
+* [rem单位](http://www.cnblogs.com/y896926473/articles/5351735.html)
+* [components复用](https://www.zhihu.com/question/34252190)
+
+------
+
+  [1]: http://oibzvf99m.bkt.clouddn.com/75FD45A8-E4B6-46E0-AF69-91970381C082.png
+  [2]: http://oibzvf99m.bkt.clouddn.com/0F28D43E-5837-4A66-A8AE-51C9E4B31C8C.png
+  [3]: http://oibzvf99m.bkt.clouddn.com/381FE4E0-CF17-4245-B9FB-2380411112BC.png
+  [4]: http://oibzvf99m.bkt.clouddn.com/B282AEB6-C42E-4883-885A-319113796251.png

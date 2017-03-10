@@ -21,6 +21,7 @@
 <style>
   body {
     margin: 0;
+    font-size: 0.14rem;
   }
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -30,5 +31,8 @@
     color: #2c3e50;
     /*margin-top: 60px;*/
     background-color: #f5f5f5;
+  }
+  html {
+    font-size: calc(100vw/3.75)
   }
 </style>

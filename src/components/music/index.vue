@@ -3,13 +3,16 @@
     <div class="container">
       <div class="music-info">
         <div class="cover">
-          <span class="msk"></span>
+          <span class="msk">
+            <img src="../../assets/coverall.png">
+          </span>
           <img src="../../assets/cover.jpeg"/>
           <audio src="http://oibzvf99m.bkt.clouddn.com/test_music.mp3"></audio>
         </div>
         <div class="info">
           <div class="title">
-            <i class="tag"></i>
+            <!--<i class="tag"></i>-->
+            <img src="../../assets/icon.png" class="tag">
             <div class="title-desc">
               <h1 class="music-title">なんでもないや (movie ver.)</h1>
               <p class="desc">动画电影《你的名字。》ED</p>
@@ -66,30 +69,32 @@
   </div>
 </template>
 <style scoped>
+  h1 {
+    font-size: 0.14rem;
+  }
   .music {
-    width: 60%;
     margin: auto;
     border-right: 1px solid #cccccc;
     border-left: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
-    padding-bottom: 30px;
+    padding-bottom: 0.30rem;
     background-color: #fff;
   }
   .comment-title {
     border-bottom: 2px solid #c20c0c;
-    height: 55px;
+    height: 0.55rem;
   }
   .comment-title h3 {
     float: left;
   }
   .comment-title span {
     float: left;
-    margin: 24px 0 0 6px;
-    font-size: 14px;
+    margin: 0.24rem 0 0 0.06rem;
+    font-size: 0.14rem;
   }
   .heard {
     width: 100%;
-    height: 30px;
+    height: 0.30rem;
     background-color: red;
     position: fixed;
     top: 0;
@@ -99,22 +104,25 @@
   }
   .title-desc {
     float: right;
+    font-size: 0.12rem;
+    padding: 0.22rem 0 0 0.1rem;
   }
   .desc {
     text-align: left;
     position: relative;
-    bottom: 25px;
   }
   .cover {
     width: 28%;
-    height: 20px;
+    height: 0.20rem;
     float: left;
     position: absolute;
+    top: 0.8rem;
   }
   .cover img {
-    top: 44px;
+    top: 0.26rem;
     position: absolute;
-    left: 46px;
+    left: 0.27rem;
+    width: 0.8rem;
   }
   .info {
     width: 69%;
@@ -122,15 +130,16 @@
   }
   .singer {
     text-align: left;
-    margin-left: 65px;
+    margin-left: 0.65rem;
+    font-size: 0.12rem;
   }
   .tag {
-    width: 54px;
-    height: 24px;
-    background: url('../../assets/icon.png');
+    width: 0.54rem;
+    height: 0.24rem;
+    background: url('../../assets/icon.png') no-repeat;
     display: inline-block;
     float: left;
-    margin-top: 30px;
+    margin-top: 0.3rem;
   }
   .music-info {
   }
@@ -139,28 +148,38 @@
   }
   .lyrics {
     text-align: left;
-    margin-left: 60px;
+    margin-left: 0.6rem;
+    font-size: 0.12rem;
   }
   .control {
     text-align: left;
-    margin-left: 60px;
+    margin-left: 0.6rem;
   }
   .msk {
-    width: 206px;
-    height: 205px;
-    background: url(../../assets/coverall.png) no-repeat;
+    /*width: 2.06rem;*/
+    /*height: 2.05rem;*/
+    /*!*background: url(../../assets/coverall.png) no-repeat;*!*/
+    /*position: absolute;*/
+    /*top: 0.10rem;*/
+    /*left: 0.10rem;*/
+    /*z-index: 2;*/
+  }
+
+  .msk img {
+    width: 1.15rem;
+    height: 1.15rem;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 0.10rem;
+    left: 0.10rem;
     z-index: 2;
   }
+
   .music-comment {
     text-align: left;
-    margin:0 20px;
+    margin:0 0.20rem;
     clear: both;
   }
 </style>
-
 <script>
   import $ from 'jquery'
   import MComment from '../../components/widgets/m-comment.vue'
