@@ -60,9 +60,7 @@
           <h3>评论</h3>
           <span>共20条评论</span>
         </div>
-        <div v-for="comment in comments">
-          <m-comment :comment="comment" ></m-comment>
-        </div>
+        <m-comment :comments="comments" ></m-comment>
       </section>
     </div>
 

@@ -1,13 +1,17 @@
 <template>
-  <div class="m-comment">
-    <div class="avatar">
-      <avatar username="Adam" :src="comment.avatar"></avatar>
-    </div>
-    <div class="comment">
-      <p>{{comment.name}}：</p>
-      <p>{{comment.content}}</p>
-      <div>
-        <span class="comment-time">2017年03月09日</span>
+  <div>
+    <div v-for="comment in comments">
+      <div class="m-comment">
+        <div class="avatar">
+          <avatar username="Adam" :src="comment.avatar"></avatar>
+        </div>
+        <div class="comment">
+          <p>{{comment.name}}：</p>
+          <p>{{comment.content}}</p>
+          <div>
+            <span class="comment-time">2017年03月09日</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -45,7 +49,7 @@
       Avatar
     },
     props: {
-      comment: {
+      comments: {
         type: Object
       }
     }
