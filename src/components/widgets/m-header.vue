@@ -23,7 +23,7 @@
     font-size: 0.12rem;
     display: inline-block;
     padding: 0.08rem;
-    width: 0.38rem;
+    width: 0.53rem;
     height: 0.24rem;
     color: #fff;
     float: left;

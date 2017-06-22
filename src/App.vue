@@ -19,6 +19,7 @@
 </script>
 
 <style>
+  @import "~bootstrap/dist/css/bootstrap.css";
   body {
     margin: 0;
     font-size: 0.14rem;

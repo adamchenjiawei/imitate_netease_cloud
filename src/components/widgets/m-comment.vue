@@ -50,7 +50,7 @@
     },
     props: {
       comments: {
-        type: Object
+        type: Array
       }
     }
   }

@@ -24,7 +24,7 @@
           </div>
 
           <div class="control">
-            <input type="button" @click="playMusic" class="play-music" value="播放">
+            <input type="button" @click="playMusic" class="play-music btn btn-info" value="播放">
           </div>
           <div class="lyrics">
             <p>
@@ -59,8 +59,14 @@
         <div class="comment-title">
           <h3>评论</h3>
           <span>共20条评论</span>
+          <button class="btn btn-info btn-comment" @click="handleComment">评论</button>
         </div>
         <m-comment :comments="comments" ></m-comment>
+        <m-dialog :show="showDialog" width="70%">
+          <div>
+            <textarea class="form-control" rows="3">评论内容</textarea>
+          </div>
+        </m-dialog>
       </section>
     </div>
 
@@ -77,6 +83,10 @@
     border-bottom: 1px solid #cccccc;
     padding-bottom: 0.30rem;
     background-color: #fff;
+  }
+  .btn-comment {
+    float: right;
+    margin: 0.12rem;
   }
   .comment-title {
     border-bottom: 2px solid #c20c0c;
@@ -148,6 +158,8 @@
     text-align: left;
     margin-left: 0.6rem;
     font-size: 0.12rem;
+    max-height: 1rem;
+    overflow-y: scroll;
   }
   .control {
     text-align: left;
@@ -177,10 +189,14 @@
     margin:0 0.20rem;
     clear: both;
   }
+  .form-control {
+    width: 100%;
+  }
 </style>
 <script>
   import $ from 'jquery'
   import MComment from '../../components/widgets/m-comment.vue'
+  import MDialog from '../../components/widgets/m-dialog.vue'
   export default {
     data () {
       return {
@@ -210,11 +226,20 @@
             name: '桜雒',
             avatar: 'http://p4.music.126.net/_RyNH596ix92d5wDxpVXIg==/18572950418225844.jpg?param=50y50'
           }
-        ]
+        ],
+        message: '这是绑定内容',
+        showDialog: false
       }
     },
     components: {
-      MComment
+      MComment,
+      MDialog
+    },
+    created () {
+      this.showDialog = true
+      this.$on('on-hide', function () {
+        this.showDialog = false
+      })
     },
     methods: {
       playMusic () {
@@ -227,6 +252,9 @@
           audio.pause()
           playButton.setAttribute('value', '播放')
         }
+      },
+      handleComment () {
+        this.showDialog = true
       }
     }
   }
